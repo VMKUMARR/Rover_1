@@ -2,7 +2,7 @@ package com.example.rover1;
 
 public class ExampleUnit {
 
-    private int[] coordinates = {0, 0, 0}; // coordinates
+    private final int[] coordinates = {0, 0, 0}; // coordinates
     private String direction = "N"; // Initial direction: N
 
     public int[] getCoordinates() {
@@ -18,26 +18,53 @@ public class ExampleUnit {
     public void move(String command) {
         int step = command.equals("f") ? 1 : -1;
 
-        if (direction.equals("N") || direction.equals("S")) {
-            coordinates[1] += step;
-        } else if (direction.equals("E") || direction.equals("W")) {
-            coordinates[0] += step;
-        } else if (direction.equals("Up") || direction.equals("Down")) {
-            coordinates[2] += step;
+        switch (direction) {
+            case "N":
+            case "S":
+                coordinates[1] += step;
+                break;
+            case "E":
+            case "W":
+                coordinates[0] += step;
+                break;
+            case "Up":
+            case "Down":
+                coordinates[2] += step;
+                break;
         }
     }
 
     public void turn(String command) {
         if (command.equals("l")) {
-            if (direction.equals("N")) direction = "W";
-            else if (direction.equals("W")) direction = "S";
-            else if (direction.equals("S")) direction = "E";
-            else if (direction.equals("E")) direction = "N";
+            switch (direction) {
+                case "N":
+                    direction = "W";
+                    break;
+                case "W":
+                    direction = "S";
+                    break;
+                case "S":
+                    direction = "E";
+                    break;
+                case "E":
+                    direction = "N";
+                    break;
+            }
         } else if (command.equals("r")) {
-            if (direction.equals("N")) direction = "E";
-            else if (direction.equals("E")) direction = "S";
-            else if (direction.equals("S")) direction = "W";
-            else if (direction.equals("W")) direction = "N";
+            switch (direction) {
+                case "N":
+                    direction = "E";
+                    break;
+                case "E":
+                    direction = "S";
+                    break;
+                case "S":
+                    direction = "W";
+                    break;
+                case "W":
+                    direction = "N";
+                    break;
+            }
         }
     }
 
@@ -46,8 +73,6 @@ public class ExampleUnit {
             direction = "Up";
         } else if ("d".equals(command)) {
             direction = "Down";
-        } else {
-            // Handle invalid angle
         }
     }
 

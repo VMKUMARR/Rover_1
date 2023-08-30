@@ -29,6 +29,7 @@ public class ExampleUnitTest {
         assertArrayEquals(expectedCoordinates, rover.getCoordinates());
     }
 
+    @Test
     public void testTurnLeft() {
         rover.turn("l");
         assertEquals("W", rover.getDirection());
