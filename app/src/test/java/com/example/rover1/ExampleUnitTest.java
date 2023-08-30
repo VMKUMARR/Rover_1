@@ -1,6 +1,7 @@
 package com.example.rover1;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,4 +29,14 @@ public class ExampleUnitTest {
         assertArrayEquals(expectedCoordinates, rover.getCoordinates());
     }
 
+    public void testTurnLeft() {
+        rover.turn("l");
+        assertEquals("W", rover.getDirection());
+    }
+
+    @Test
+    public void testTurnRight() {
+        rover.turn("r");
+        assertEquals("E", rover.getDirection());
+    }
 }
