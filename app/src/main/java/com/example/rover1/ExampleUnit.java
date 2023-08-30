@@ -46,6 +46,21 @@ public class ExampleUnit {
             direction = "Up";
         } else if ("d".equals(command)) {
             direction = "Down";
+        } else {
+            // Handle invalid angle
+        }
+    }
+
+
+    public void executeCommands(String[] commands) {
+        for (String command : commands) {
+            if ("f".equals(command) || "b".equals(command)) {
+                move(command);
+            } else if ("l".equals(command) || "r".equals(command)) {
+                turn(command);
+            } else if ("u".equals(command) || "d".equals(command)) {
+                angle(command);
+            }
         }
     }
 

@@ -51,12 +51,14 @@ public class ExampleUnitTest {
         assertEquals("Down", rover.getDirection());
     }
 
+    @Test
+    public void testExecuteCommands() {
+        String[] commands = {"f", "r", "u", "b", "l"};
+        rover.executeCommands(commands);
+        int[] expectedCoordinates = {0, 1, -1};
+        assertArrayEquals(expectedCoordinates, rover.getCoordinates());
+        assertEquals("Up", rover.getDirection());
+    }
 
 }
-
-
-
-
-
-
 
