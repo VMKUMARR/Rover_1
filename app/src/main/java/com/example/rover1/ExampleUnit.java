@@ -2,7 +2,7 @@ package com.example.rover1;
 
 public class ExampleUnit {
 
-    private int[] coordinates = {0, 0, 0}; // x, y, z coordinates
+    private int[] coordinates = {0, 0, 0}; // coordinates
     private String direction = "N"; // Initial direction: N
 
     public int[] getCoordinates() {
