@@ -41,5 +41,12 @@ public class ExampleUnit {
         }
     }
 
+    public void angle(String command) {
+        if ("u".equals(command)) {
+            direction = "Up";
+        } else if ("d".equals(command)) {
+            direction = "Down";
+        }
+    }
 
 }

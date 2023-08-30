@@ -39,4 +39,24 @@ public class ExampleUnitTest {
         rover.turn("r");
         assertEquals("E", rover.getDirection());
     }
+    @Test
+    public void testAngleUp() {
+        rover.angle("u");
+        assertEquals("Up", rover.getDirection());
+    }
+
+    @Test
+    public void testAngleDown() {
+        rover.angle("d");
+        assertEquals("Down", rover.getDirection());
+    }
+
+
 }
+
+
+
+
+
+
+
