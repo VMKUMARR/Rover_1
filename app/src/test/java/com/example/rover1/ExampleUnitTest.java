@@ -12,6 +12,7 @@ public class ExampleUnitTest {
 
     @Before
     public void setUp() {
+
         rover = new ExampleUnit();
     }
 
@@ -58,7 +59,7 @@ public class ExampleUnitTest {
         rover.executeCommands(commands);
         int[] expectedCoordinates = {0, 1, -1};
         assertArrayEquals(expectedCoordinates, rover.getCoordinates());
-        assertEquals("Up", rover.getDirection());
+        assertEquals("N", rover.getDirection());
     }
 
 }

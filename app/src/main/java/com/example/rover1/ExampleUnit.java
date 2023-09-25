@@ -3,17 +3,21 @@ package com.example.rover1;
 public class ExampleUnit {
 
     private final int[] coordinates = {0, 0, 0}; // coordinates
-    private String direction = "N"; // Initial direction: N
+    private String direction = "N"; // Initial direction:
+    private  String prevdirection = "N";
+
+
 
     public int[] getCoordinates() {
+
         return coordinates;
     }
     public String getDirection(){
         return direction;
     }
-    public void setDirection(String direction){
-        this.direction = direction;
-    }
+//    public void setDirection(String direction){
+//        this.direction = direction;
+//    }
 
     public void move(String command) {
         int step = command.equals("f") ? 1 : -1;
@@ -34,9 +38,44 @@ public class ExampleUnit {
         }
     }
 
-    public void turn(String command) {
-        if (command.equals("l")) {
-            switch (direction) {
+    public void turn(String command){
+        if(command.equals("r")){
+            switch (direction){
+                case "N":
+
+                    direction = "E";
+                    break;
+                case "E":
+                    direction = "S";
+                    break;
+                case "S":
+                    direction = "W";
+                    break;
+                case "W":
+                    direction = "N";
+                    break;
+                case "Up":
+                    switch (prevdirection){
+                        case "N":
+
+                            direction = "E";
+                            break;
+                        case "E":
+                            direction = "S";
+                            break;
+                        case "S":
+                            direction = "W";
+                            break;
+                        case "W":
+                            direction = "N";
+                            break;
+                    }
+
+                    break;
+            }
+
+        }else if(command.equals("l")){
+            switch (direction){
                 case "N":
                     direction = "W";
                     break;
@@ -49,33 +88,35 @@ public class ExampleUnit {
                 case "E":
                     direction = "N";
                     break;
-            }
-        } else if (command.equals("r")) {
-            switch (direction) {
-                case "N":
-                    direction = "E";
-                    break;
-                case "E":
-                    direction = "S";
-                    break;
-                case "S":
-                    direction = "W";
-                    break;
-                case "W":
-                    direction = "N";
+                case "Up":
+                    switch (prevdirection){
+                        case "N":
+                            direction = "W";
+                            break;
+                        case "W":
+                            direction = "S";
+                            break;
+                        case "S":
+                            direction = "E";
+                            break;
+                        case "E":
+                            direction = "N";
+                            break;
+                    }
                     break;
             }
         }
     }
 
-    public void angle(String command) {
-        if ("u".equals(command)) {
-            direction = "Up";
-        } else if ("d".equals(command)) {
-            direction = "Down";
+    public void angle(String command){
+        if(command.equals("u")){
+            prevdirection = getDirection();
+            direction ="Up";
+        }else if(command.equals("d")){
+            prevdirection = getDirection();
+            direction  = "Down";
         }
     }
-
 
     public void executeCommands(String[] commands) {
         for (String command : commands) {
